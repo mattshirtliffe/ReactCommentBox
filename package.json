@@ -12,6 +12,7 @@
     "babel-preset-react": "^6.5.0",
     "body-parser": "^1.15.1",
     "express": "^4.13.4",
+    "lodash": "^4.13.1",
     "mongoose": "^4.4.20",
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
@@ -20,8 +21,8 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "dev": "webpack -d --watch",
+    "build": "webpack -p"
   },
   "repository": {
     "type": "git",
@@ -40,9 +41,5 @@
   "homepage": "https://github.com/reactjs/react-tutorial",
   "engines": {
     "node": "0.12.x"
-  },
-  "scripts": {
-    "dev": "webpack -d --watch",
-    "build" : "webpack -p"
   }
 }

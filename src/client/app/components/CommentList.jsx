@@ -1,4 +1,5 @@
 var React = require('react');
+var Comment = require('./Comment.jsx');
 
 module.exports = React.createClass({
   render: function(){

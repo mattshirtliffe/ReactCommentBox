@@ -1,7 +1,8 @@
 var React = require('react');
 
-var CommentList = require('./CommentList');
-var CommentForm = require('./CommentForm');
+var CommentList = require('./CommentList.jsx');
+var CommentForm = require('./CommentForm.jsx');
+
 
 module.exports = React.createClass({
   // self describing function set up all stuff in components ran once
