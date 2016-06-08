@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "license": "see LICENSE file",
-  "description": "Code from the React tutorial.",
+  "description": "React and Express App",
   "main": "server.js",
   "dependencies": {
     "babel-core": "^6.9.1",
@@ -34,7 +34,7 @@
     "comment",
     "example"
   ],
-  "author": "petehunt",
+  "author": "Matthew Shirtliffe",
   "bugs": {
     "url": "https://github.com/reactjs/react-tutorial/issues"
   },

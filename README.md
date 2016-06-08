@@ -1,55 +1,32 @@
-[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+# React and Express Comment Box
 
-# React Tutorial
+This is based on the React comment box example from [the React tutorial](http://facebook.github.io/react/docs/tutorial.html).
+I the made some enhancements
+- Separated jsx files
+- Created api with mongodb instead of using .json file
+- Set up [webpack](https://webpack.github.io/)
+- Shitcanned jQuery using [fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) instead
 
-This is the React comment box example from [the React tutorial](http://facebook.github.io/react/docs/tutorial.html).
-
-## To use
-
-There are several simple server implementations included. They all serve static files from `public/` and handle requests to `/api/comments` to fetch or add data. Start a server with one of the following:
-
-### Node
-
+## Install Dependencies
 ```sh
 npm install
-node server.js
 ```
-
-### Python
-
+## To run Dev
 ```sh
-pip install -r requirements.txt
-python server.py
+npm run dev
 ```
 
-### Ruby
+## To run Server
 ```sh
-ruby server.rb
+npm start
 ```
 
-### PHP
-```sh
-php server.php
+
+## Database info
+
+using this app you will need to modify this line
 ```
+  mongoose.connect("mongodb://172.17.0.2/comment");
 
-### Go
-```sh
-go run server.go
 ```
-
-### Perl
-
-```sh
-cpan Mojolicious
-perl server.pl
-```
-
-And visit <http://localhost:3000/>. Try opening multiple tabs!
-
-## Changing the port
-
-You can change the port number by setting the `$PORT` environment variable before invoking any of the scripts above, e.g.,
-
-```sh
-PORT=3001 node server.js
-```
+point to your database
