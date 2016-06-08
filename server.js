@@ -1,14 +1,4 @@
-/**
- * This file provided by Facebook is for non-commercial testing and evaluation
- * purposes only. Facebook reserves all rights not expressly granted.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
- * FACEBOOK BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN
- * ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
- * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- */
+
 var mongoose = require('mongoose')
 var fs = require('fs');
 var path = require('path');
@@ -20,9 +10,21 @@ var COMMENTS_FILE = path.join(__dirname, 'comments.json');
 
 app.set('port', (process.env.PORT || 3000));
 
-app.use('/', express.static(path.join(__dirname, 'public')));
+app.use('/', express.static(path.join(__dirname, 'src/client/')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
+
+mongoose.connect("mongodb://172.17.0.2/gilac");
+
+var Schema = mongoose.Schema;
+
+var ItemSchema = new Schema({
+    title: {type: String, required: true},
+    description: {type: String},
+    bought: {type: Boolean, default: false},
+});
+
+var Item = mongoose.model('Item', ItemSchema);
 
 // Additional middleware which will set headers that we need on each request.
 app.use(function(req, res, next) {
@@ -44,6 +46,7 @@ app.get('/api/comments', function(req, res) {
     res.json(JSON.parse(data));
   });
 });
+
 
 app.post('/api/comments', function(req, res) {
   fs.readFile(COMMENTS_FILE, function(err, data) {
@@ -69,6 +72,32 @@ app.post('/api/comments', function(req, res) {
       }
       res.json(comments);
     });
+  });
+});
+
+
+
+app.post('/api/items', function(req, res) {
+
+  Item.create({title: req.body.title, description: req.body.description, bought: req.body.bought}, function(err, item){
+      if(err){
+        console.log(err);
+      }
+      else{
+        res.json(item);
+      }
+  });
+});
+
+app.get('/api/items', function(req, res) {
+
+  Item.find(function(err, item){
+      if(err){
+        console.log(err);
+      }
+      else{
+        res.json(item);
+      }
   });
 });
 
