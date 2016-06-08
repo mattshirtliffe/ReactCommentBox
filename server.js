@@ -14,7 +14,7 @@ app.use('/', express.static(path.join(__dirname, 'src/client/')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-mongoose.connect("mongodb://172.17.0.2/gilac");
+mongoose.connect("mongodb://172.17.0.2/comment");
 
 var Schema = mongoose.Schema;
 
